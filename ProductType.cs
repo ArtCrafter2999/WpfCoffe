@@ -30,6 +30,7 @@ namespace WpfApp2
         {
             return !left.Equals(right);
         }
+        
     }
     //public class ProductSale
     //{

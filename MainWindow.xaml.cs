@@ -14,8 +14,8 @@ namespace WpfApp2
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public static MainWindow Pointer;
-        private ApplicationContext db;
+        //public static MainWindow Pointer;
+        public ApplicationContext db;
         public IEnumerable<ProductType> ProductTypes;
         //new ProductType() { Title = "Американо",Price = 12, Image = @"Images\Americano.jpg"},
         //new ProductType() { Title = "Какао",    Price = 18, Image = @"Images\Cacao.jpg"},
@@ -76,7 +76,8 @@ namespace WpfApp2
 
         public void ProductViewButtonClicked(ProductType product)
         {
-
+            var modifier = new ProductModifier(product, this);
+            modifier.ShowDialog();
         }
         public void ProductSaleButtonClicked(ProductSaleCard product)
         {

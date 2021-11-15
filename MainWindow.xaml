@@ -43,7 +43,7 @@
         </TabItem>
         <TabItem Header="История" FontSize="16">
             <Grid>
-                <DataGrid ItemsSource="{Binding Path=History}" SelectedItem="{Binding Path=HistoryItem}" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="10,10,0,10" Width="230">
+                <DataGrid IsReadOnly="True" ItemsSource="{Binding Path=History}" SelectedItem="{Binding Path=HistoryItem}" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="10,10,0,10" Width="230">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Дата" Width="150" Binding="{Binding Date}"/>
                         <DataGridTextColumn Header="Цена" Width="70" Binding="{Binding Price}"/>

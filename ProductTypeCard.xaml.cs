@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.ComponentModel;
 using Command;
 using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace WpfApp2
 {

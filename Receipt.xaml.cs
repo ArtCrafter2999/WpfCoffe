@@ -28,7 +28,7 @@ namespace WpfApp2
             {
                 if ((product as ProductSaleCard).Count > 0)
                 {
-                    ReceiptText += (product as ProductSaleCard).product.ToString() + "\n";
+                    ReceiptText += (product as ProductSaleCard).ToString() + "\n";
                     Sum += (product as ProductSaleCard).product.Price * (product as ProductSaleCard).Count;
                 }
             }

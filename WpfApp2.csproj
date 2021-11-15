@@ -81,7 +81,9 @@
     </Compile>
     <Compile Include="ICard.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="ProductCardBase.cs" />
+    <Compile Include="ProductModifier.xaml.cs">
+      <DependentUpon>ProductModifier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProductSaleCard.xaml.cs">
       <DependentUpon>ProductSaleCard.xaml</DependentUpon>
     </Compile>
@@ -108,6 +110,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProductModifier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductSaleCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

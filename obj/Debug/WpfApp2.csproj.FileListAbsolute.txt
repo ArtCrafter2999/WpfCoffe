@@ -87,3 +87,5 @@ C:\Users\Admin\source\repos\WpfCoffee\bin\Debug\Images\ID_3.jpg
 C:\Users\Admin\source\repos\WpfCoffee\bin\Debug\Images\ID_4.jpg
 C:\Users\Admin\source\repos\WpfCoffee\bin\Debug\Images\ID_5.jpg
 C:\Users\Admin\source\repos\WpfCoffee\bin\Debug\Images\ID_6.jpg
+C:\Users\Admin\source\repos\WpfCoffee\obj\Debug\ProductModifier.g.cs
+C:\Users\Admin\source\repos\WpfCoffee\obj\Debug\ProductModifier.baml

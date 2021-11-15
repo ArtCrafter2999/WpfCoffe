@@ -37,5 +37,9 @@ namespace WpfApp2
             Count = 1;
             From = from;
         }
+        public override string ToString()
+        {
+            return $"{Title} x{Count} ....... {product.Price * Count}.00₴";
+        }
     }
 }
