@@ -16,7 +16,7 @@ namespace WpfApp2
 
         public override int GetHashCode()
         {
-            return Title.GetHashCode() + Price.GetHashCode() + Id.GetHashCode() + Category.GetHashCode();
+            return Title.GetHashCode() + Price.GetHashCode() + Id.GetHashCode();
         }
         public override bool Equals(object obj)
         {

@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="WpfApp2.ProductAddCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp2"
+             mc:Ignorable="d" d:DesignWidth="162" BorderBrush="Black" BorderThickness="0" Height="255">
+    <Button Command="{Binding Path=ButtonClicked}" BorderThickness="1">
+        <Grid Height="255" Width="162">
+            <Label Content="+" FontSize="180" FontWeight="Bold" Foreground="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Добавить" FontStyle="Italic" Foreground="Gray" FontSize="30" HorizontalContentAlignment="Center" VerticalAlignment="Top"  Height="45" Margin="0,62,0,0"/>
+        </Grid>
+    </Button>
+</UserControl>

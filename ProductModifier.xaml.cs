@@ -13,7 +13,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Command;
+using Microsoft.Win32;
 
 namespace WpfApp2
 {
@@ -26,7 +27,30 @@ namespace WpfApp2
         public int Price { get => Product.Price; set { Product.Price = value; } }
         public string Category { get => Product.Category; set { Product.Category = value; OnPropertyChanged("Category"); } }
         public List<string> Categories { get; set; } = new List<string>();
-        public BitmapImage Image { get => new BitmapImage( new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Images\ID_" + Product.Id + ".jpg")); }
+        public BitmapImage Image => new BitmapImage(
+                File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Images\ID_" + Product.Id + ".jpg") ?
+                new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Images\ID_" + Product.Id + ".jpg") :
+                new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Images\None.jpg"));
+
+        public ICommand OkButton => new RelayCommand(o => {
+            DialogResult = true;
+            Close();
+        });
+        public ICommand DeleteButton => new RelayCommand(o => {
+            var id = Product.Id;
+            DB.ProductTypes.Remove(DB.ProductTypes.Find(Product.Id));
+            Close();
+        });
+        public ICommand ImageButton => new RelayCommand(o => {
+            var open = new OpenFileDialog();
+            if (open.ShowDialog().Value)
+            {
+                var ImageFile = new FileInfo(open.FileName);
+                ImageFile.CopyTo(AppDomain.CurrentDomain.BaseDirectory + @"Images\ID_" + Product.Id + ".jpg");
+                OnPropertyChanged("Image");
+            }
+        });
+        
         public ProductModifier(ProductType product, MainWindow from)
         {
             InitializeComponent();

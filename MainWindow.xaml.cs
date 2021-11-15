@@ -9,6 +9,9 @@ using System.Windows.Input;
 using Command;
 using System.IO;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System;
 
 namespace WpfApp2
 {
@@ -74,10 +77,45 @@ namespace WpfApp2
             ProductsChange();
         }, o => ToPay != "0₴");
 
+        public void ProductAddButtonClicked()
+        {
+            var product = new ProductType() { Title = _searchText };
+            db.ProductTypes.Add(product);
+            db.Entry(product).State = EntityState.Added;
+            db.SaveChanges();
+            DatabaseUpdate();
+            var modifier = new ProductModifier(product, this);
+            bool? res = modifier.ShowDialog();
+            if (res.HasValue && res.Value)
+            {
+                product.Title = modifier.Product.Title;
+                product.Price = modifier.Product.Price;
+                product.Category = modifier.Product.Category;
+                db.Entry(product).State = EntityState.Modified;
+            }
+            else
+            {
+                if (db.ProductTypes.Local.Contains(product))
+                {
+                    db.ProductTypes.Remove(product);
+                }
+            }
+            db.SaveChanges();
+            DatabaseUpdate();
+        }
         public void ProductViewButtonClicked(ProductType product)
         {
             var modifier = new ProductModifier(product, this);
-            modifier.ShowDialog();
+            if (modifier.ShowDialog().Value == true)
+            {
+                var ChangeProduct = db.ProductTypes.Find(product.Id);
+                ChangeProduct.Title = modifier.Product.Title;
+                ChangeProduct.Price = modifier.Product.Price;
+                ChangeProduct.Category = modifier.Product.Category;
+                db.Entry(ChangeProduct).State = EntityState.Modified;
+            }
+            db.SaveChanges();
+            DatabaseUpdate();
         }
         public void ProductSaleButtonClicked(ProductSaleCard product)
         {
@@ -160,9 +198,13 @@ namespace WpfApp2
             CartWrap.Children.Clear();
             WrapRenew(CartWrap.Children, Cart);
             AllProductsWrap.Children.Clear();
+            AllProductsWrap.Children.Add(new ProductAddCard(this));
             foreach (var Product in ProductTypes)
             {
-                AllProductsWrap.Children.Add(new ProductTypeCard(Product, this) { CardType = CardType.ProductView });
+                if (_searchText == "" || Product.Title.ToLower().Contains(_searchText.ToLower()))
+                {
+                    AllProductsWrap.Children.Add(new ProductTypeCard(Product, this) { CardType = CardType.ProductView });
+                }
             }
             OnPropertyChanged("ToPay");
         }

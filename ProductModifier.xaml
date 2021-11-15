@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="ProductModifier" Height="457" Width="273">
+        Title="ProductModifier" ResizeMode="NoResize" Height="457" Width="273">
     <Grid>
-        <Button Command="{Binding Path=ImageClick}" Margin="10,10,10,243" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image Source="{Binding Path=Image}"/>
+        <Button Command="{Binding Path=ImageButton}" Margin="10,10,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="167">
+            <Image Source="{Binding Path=Image}" Margin="5"/>
         </Button>
         <Label Content="Название" VerticalAlignment="Top"  FontSize="16" Margin="10,177,10,0"/>
         <TextBox Text="{Binding Path=PTitle, UpdateSourceTrigger=PropertyChanged}" FontSize="16" VerticalAlignment="Top" Height="33" Margin="10,206,10,0"/>
@@ -17,5 +17,7 @@
         <Label Content="Категория" VerticalAlignment="Top" FontSize="16" Margin="10,303,10,0"/>
         <ComboBox ItemsSource="{Binding Path=Categories}" SelectedItem="{Binding Path=Category, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="33" Margin="10,334,10,0" />
         <TextBox Text="{Binding Path=Category, UpdateSourceTrigger=PropertyChanged}" FontSize="16" VerticalAlignment="Top" Height="33" Margin="10,334,30,0"/>
+        <Button Command="{Binding Path=OkButton}" Content="Ок" FontWeight="Bold" FontSize="16" Background="Green" Foreground="White" Margin="199,381,10,10"/>
+        <Button Command="{Binding Path=DeleteButton}" Content="Удалить" FontWeight="Bold" FontSize="16" Background="Red" Foreground="White" Margin="10,381,171,10"/>
     </Grid>
 </Window>

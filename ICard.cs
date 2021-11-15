@@ -9,8 +9,8 @@ namespace WpfApp2
         ProductType,
         ProductSale,
         ProductView,
-        Group,
-        Plus
+        ProductAdd,
+        Group
     }
     public interface ICard
     {

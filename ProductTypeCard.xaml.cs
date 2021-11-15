@@ -13,7 +13,11 @@ namespace WpfApp2
         public ProductType product;
         public string Title { get => product.Title; }
         public string Price { get => $"{product.Price}₴"; }
-        public BitmapImage Image { get => new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Images\ID_" + product.Id + ".jpg")); }
+        public string Id { get => $"Id:{product.Id}"; }
+        public BitmapImage Image => new BitmapImage(
+                File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"Images\ID_" + product.Id + ".jpg") ?
+                new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Images\ID_" + product.Id + ".jpg") :
+                new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Images\None.jpg"));
         public MainWindow From;
         public CardType CardType { get; set; } = CardType.ProductType;
         public ICommand ButtonClicked => new RelayCommand(o =>
