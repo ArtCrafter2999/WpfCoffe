@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp2.Receipt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Receipt" Height="440" Width="330">
+    <Grid>
+        <TextBox Text="{Binding Path=ReceiptText}" IsReadOnly="True" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="10,10,10,42" FontSize="16"/>
+        <Button Command="{Binding Path=CancelButton}" Foreground = "White"  Content="Отмена" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="229,372,0,0" Height="27">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="Red" Offset="0"/>
+                    <GradientStop Color="#FFB60000" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Command="{Binding Path=OKButton}" Content="Оплачено" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="141,372,0,0" Height="27">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#FF8BFF69" Offset="0"/>
+                    <GradientStop Color="#FF00FF0C" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

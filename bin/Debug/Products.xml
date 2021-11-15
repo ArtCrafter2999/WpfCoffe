@@ -1,0 +1,10 @@
+<Products>
+  <Group Title="Горячие напитки">
+    <Product Title="Американо" Price="12" Image="Images\Americano.jpg" />
+    <Product Title="Какао" Price="18" Image="Images\Cacao.jpg" />
+    <Product Title="Капучино" Price="16" Image="Images\Cappuccino.jpg" />
+    <Product Title="Лате" Price="16" Image="Images\Latte.jpg" />
+    <Product Title="Раф-Кофе" Price="16" Image="Images\RafCoffee.jpg" />
+    <Product Title="Єспрессо" Price="11" Image="Images\Espresso.jpg" />
+  </Group>
+</Products>

@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1040" MinWidth="600" MinHeight="700">
+    <TabControl>
+        <TabItem Header="Заказ" FontSize="16">
+            <Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,348,10,10">
+                    <WrapPanel Name="ProductsWrap"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </ScrollViewer>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,10,10,348">
+                    <WrapPanel Name="CartWrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </ScrollViewer>
+                <GroupBox Header="Оплата" HorizontalAlignment="Stretch" Height="76" VerticalAlignment="Top" Margin="10,270,10,0">
+                    <Grid>
+                        <TextBox Text="{Binding Path=SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="201,19,312,2"/>
+                        <Label Content="Поиск" Margin="201,-4,312,25"/>
+                        <Label Content="К оплате:" Width="164" HorizontalAlignment="Left" FontSize="20" Margin="10,6,0,6"/>
+                        <Label Content="{Binding Path=ToPay}" Width="98" HorizontalAlignment="Left" FontWeight="Bold" Foreground="Green" FontSize="30" Margin="103,0,0,0"/>
+                        <Button Command="{Binding Path=CancelCommand}" Width="146" HorizontalAlignment="Right" Content="Отмена" FontWeight="Medium" Foreground="#FFFFBABA" FontSize="25" Margin="0,6,10,2">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                    <GradientStop Color="#FF9E0000" Offset="0.992"/>
+                                    <GradientStop Color="Red"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Command="{Binding Path=PayCommand}" Width="146" HorizontalAlignment="Right" Content="Оплатить" FontWeight="Medium" Foreground="Green" FontSize="25" Margin="0,6,161,2">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                    <GradientStop Color="#FFDCFFB8" Offset="0.992"/>
+                                    <GradientStop Color="#FF75EA00"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </TabItem>
+        <TabItem Header="История" FontSize="16">
+            <Grid>
+                <DataGrid ItemsSource="{Binding Path=History}" SelectedItem="{Binding Path=HistoryItem}" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="10,10,0,10" Width="230">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" Width="150" Binding="{Binding Date}"/>
+                        <DataGridTextColumn Header="Цена" Width="70" Binding="{Binding Price}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBox HorizontalAlignment="Stretch" Margin="264,10,10,200" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Path=RecieptText, Mode=OneWay}" FontSize="20" VerticalAlignment="Stretch"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Все товары" FontSize="16">
+            <Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10">
+                    <WrapPanel Name="AllProductsWrap"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </ScrollViewer>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
