@@ -10,7 +10,6 @@
             <Image Source="{Binding Path=Image}" Margin="2,5,2,118"/>
             <Label Content="{Binding Path=Title}" FontSize="20" FontStyle="Italic" HorizontalContentAlignment="Center" Margin="0,130,0,80"/>
             <Label Content="{Binding Path=Price}" FontSize="20" FontWeight="Bold" Foreground="Green" HorizontalContentAlignment="Center" Margin="0,175,0,36"/>
-            <Label Content="{Binding Path=Id}" FontSize="20" FontWeight="Bold" Foreground="Green" HorizontalContentAlignment="Center" Margin="0,211,0,0"/>
         </Grid>
     </Button>
 </UserControl>

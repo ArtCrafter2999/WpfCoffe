@@ -138,7 +138,7 @@ namespace WpfApp2
             else
             {
                 (prod as ProductSaleCard).Count++;
-                (prod as ProductSaleCard).OnPropertyChanged("Count");
+                (prod as ProductSaleCard).OnPropertyChanged("CountString");
                 OnPropertyChanged("ToPay");
             }
 
